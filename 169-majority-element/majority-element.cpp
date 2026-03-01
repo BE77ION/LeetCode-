@@ -6,8 +6,13 @@ public:
         for(auto i:nums){
             if(count==0){
                 ele=i;
+                count=1;
             }
-            count+=(i==ele)?1:-1;
+            else if(i==ele){
+                count++;
+            }else{
+                count--;
+            }
         }
         return ele;
     }
