@@ -3,23 +3,10 @@ public:
     int minOperations(string s) {
         int zero = 0;
         int one = 0;
-        string t=s;
-        for (int i = 1; i < t.size(); i++) {
-            if(t[i]==t[i-1]){
-                zero++;
-                t[i]=(t[i]=='0')?'1':'0';
-            }
-        }
-        t=s;
-        if(t[0]=='1')t[0]='0';
-        else t[0]='1';
-        one++;
-
-         for (int i = 1; i < t.size(); i++) {
-            if(t[i]==t[i-1]){
-                one++;
-                t[i]=(t[i]=='0')?'1':'0';
-            }
+        
+        for (int i = 0; i < s.size(); i++) {
+            if(s[i]!=(i%2?'0':'1'))one++;
+            if(s[i]!=(i%2?'1':'0'))zero++;
         }
     return min(one, zero);
 }
