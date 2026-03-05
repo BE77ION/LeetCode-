@@ -4,23 +4,21 @@ public:
         if(nums.size()<1){
             return 0;
         }
-        sort(nums.begin(),nums.end());
         int longest=1;
-        int lastsamll=nums[0];
-        int count=1;
-
-        for(int i=1;i<nums.size();i++){
-            if(nums[i]-1==lastsamll){
-                count++;
-                lastsamll=nums[i];
+        unordered_set<int>s;
+        for(int i=0;i<nums.size();i++){
+            s.insert(nums[i]);
+        }
+        for(auto i:s){
+            if(s.find(i-1)==s.end()){
+                int count=1;
+                int x=i;
+                while(s.find(x+1)!=s.end()){
+                    x=x+1;
+                    count++;
+                }
+                longest=max(longest,count);
             }
-            else if(nums[i]==lastsamll){
-                continue;
-            }else{
-                count=1;
-                lastsamll=nums[i];
-            }
-            longest=max(longest,count);
         }
         return longest;
     }
