@@ -10,7 +10,7 @@ public:
          }
          else{
             ans.back()[1]=max(ans.back()[1],nums[i][1]);
-         }
+            }
          }
          return ans;
     }
