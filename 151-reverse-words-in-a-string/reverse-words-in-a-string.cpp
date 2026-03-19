@@ -1,22 +1,25 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        int left=0;
-        int right=s.size()-1;
-        string res;
-        while(right>=0){
-            while(right>=0&&s[right]==' '){
-            right--;
+        vector<string>words;
+        string x="";
+    for(auto i:s){
+        if(isalnum(i)){
+            x+=i;
+        }else{
+            if(!x.empty()){
+                words.push_back(x);
+                x="";
             }
-        if(right<0)break;
-        int j=right;
-        while(j>=0&&s[j]!=' ')j--;
-        
-        if(!res.empty())res+=" ";
-        res+=s.substr(j+1,right-j);
-
-        right=j;
         }
-        return res;
+    }
+    if(!x.empty())words.push_back(x);
+    reverse(words.begin(),words.end());
+    string ans;
+    for(int i=0;i<words.size();i++){
+        if(i!=0)ans+=" ";
+        ans+=words[i];
+    }
+    return ans;
     }
 };
