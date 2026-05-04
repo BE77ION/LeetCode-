@@ -4,7 +4,7 @@ public:
         if(nums.size()<1){
             return 0;
         }
-        int longest=1;
+        int l=1;
         unordered_set<int>s;
         for(int i=0;i<nums.size();i++){
             s.insert(nums[i]);
@@ -17,9 +17,9 @@ public:
                     x=x+1;
                     count++;
                 }
-                longest=max(longest,count);
+                l=max(l,count);
             }
         }
-        return longest;
+        return l;
     }
 };
